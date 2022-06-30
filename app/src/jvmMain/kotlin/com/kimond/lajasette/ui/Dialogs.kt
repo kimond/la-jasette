@@ -1,19 +1,11 @@
 package com.kimond.lajasette.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.window.AwtWindow
 import androidx.compose.ui.window.FrameWindowScope
-import androidx.compose.ui.window.WindowScope
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.swing.Swing
 import java.awt.FileDialog
 import java.io.File
 import java.nio.file.Path
-import javax.swing.JOptionPane
 
 @Composable
 fun FrameWindowScope.FileDialog(

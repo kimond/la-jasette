@@ -1,9 +1,9 @@
 package com.kimond.lajasette
 
 import androidx.compose.runtime.*
-import com.kimond.lajasette.models.Conversation
-import com.kimond.lajasette.models.Project
-import com.kimond.lajasette.models.ProjectSettings
+import com.kimond.lajasette.lib.Conversation
+import com.kimond.lajasette.lib.Project
+import com.kimond.lajasette.lib.ProjectSettings
 import kotlinx.coroutines.CompletableDeferred
 import java.nio.file.Path
 import kotlin.io.path.readText

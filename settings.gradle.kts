@@ -16,3 +16,5 @@ pluginManagement {
 
 rootProject.name = "lajasette"
 
+include("app", "lib")
+

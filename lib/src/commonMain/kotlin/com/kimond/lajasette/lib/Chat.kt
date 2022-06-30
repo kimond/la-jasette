@@ -1,4 +1,4 @@
-package com.kimond.lajasette.models
+package com.kimond.lajasette.lib
 
 import kotlinx.serialization.Serializable
 
