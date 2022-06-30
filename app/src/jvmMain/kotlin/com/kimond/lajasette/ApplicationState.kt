@@ -1,6 +1,7 @@
 package com.kimond.lajasette
 
 import androidx.compose.runtime.*
+import com.kimond.lajasette.lib.Chat
 import com.kimond.lajasette.lib.Conversation
 import com.kimond.lajasette.lib.Project
 import com.kimond.lajasette.lib.ProjectSettings
@@ -18,11 +19,11 @@ class ApplicationState {
         private set
     var isChanged by mutableStateOf(false)
         private set
+    var selectedConversation: Conversation? by mutableStateOf(null)
+
     var project: Project by mutableStateOf(
         Project(
-            "New Project",
-            ProjectSettings(listOf("happy", "angry")),
-            listOf(Conversation("prison-intro"))
+            "New Project", ProjectSettings(listOf("happy", "angry")), listOf(Conversation("prison-intro"))
         )
     )
         private set
@@ -69,6 +70,20 @@ class ApplicationState {
         this.project = loadJase(loadedText)
     }
 
+    fun addConversation() {
+        project =
+            project.copy(conversations = project.conversations + Conversation("Conversation ${project.conversations.count() + 1}"))
+    }
+
+    fun addChatToConversation(conversation: Conversation) {
+        project = project.copy(conversations = project.conversations.map {
+            if (it.id == conversation.id) {
+                it.copy(chats = it.chats + Chat("???"))
+            } else {
+                it
+            }
+        })
+    }
 }
 
 class DialogState<T> {

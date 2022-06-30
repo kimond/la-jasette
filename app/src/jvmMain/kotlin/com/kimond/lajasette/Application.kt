@@ -1,17 +1,26 @@
 package com.kimond.lajasette
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyShortcut
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.FrameWindowScope
 import androidx.compose.ui.window.MenuBar
 import androidx.compose.ui.window.Window
+import com.kimond.lajasette.ui.ConversationEditor
+import com.kimond.lajasette.ui.ConversationList
 import com.kimond.lajasette.ui.FileDialog
 import kotlinx.coroutines.launch
 
@@ -49,13 +58,11 @@ fun Application(state: ApplicationState, exit: () -> Unit) {
     Window(title = titleOf(state), onCloseRequest = { exit() }) {
         ApplicationMenuBar(state)
         MaterialTheme {
-            Button(onClick = {
-                state.newProject()
-            }) {
-                Text(state.project.name)
+            Row(verticalAlignment = Alignment.Top, horizontalArrangement = Arrangement.SpaceBetween) {
+                ConversationList(state)
+                Spacer(Modifier.size(16.dp))
+                ConversationEditor(state)
             }
-
-            Text(state.project.conversations.count().toString())
         }
 
         if (state.saveDialog.isAwaiting) {
